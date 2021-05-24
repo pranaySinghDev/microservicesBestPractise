@@ -46,6 +46,10 @@ func main() {
 	if port == "" {
 		log.Fatalf("TCP connection port string missing")
 	}
+	productURL := os.Getenv("product_url")
+	if productURL == "" {
+		log.Fatalf("Product service URL is missing")
+	}
 	db, err := database.Build(&config.DBConfig{
 		Type: config.Mongodb,
 		URL:  dbURL,
@@ -79,7 +83,7 @@ func main() {
 		if err != nil {
 			return c.Status(500).SendString(err.Error())
 		}
-		product, err := getProduct(user.Product)
+		product, err := getProduct(user.Product, productURL)
 		if err != nil {
 			return c.Status(500).SendString(err.Error())
 		}
@@ -113,8 +117,9 @@ func main() {
 	log.Fatal(app.Listen(addr))
 }
 
-func getProduct(id string) (*Product, error) {
-	url := fmt.Sprintf("http://localhost:5001/products/%s", id)
+func getProduct(id, productURL string) (*Product, error) {
+
+	url := fmt.Sprintf("%s/products/%s", productURL, id)
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
