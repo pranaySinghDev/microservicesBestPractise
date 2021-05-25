@@ -31,7 +31,10 @@ curl --location --request GET 'http://localhost:5001/products/447a74a9-769a-4145
 Get All Products
 
 ```
+// Fetches first 10 records if limit and index not given
 curl --location --request GET 'http://localhost:5001/products'
+// limit = number of records , index =  page on which to fetch
+curl --location --request GET 'http://localhost:5001/products?limit=10&index=0'
 ```
 
 ## User service
@@ -63,7 +66,9 @@ curl --location --request GET 'http://localhost:5000/users/ebe18547-adf0-45e9-8b
 
 
 Get All Users
-
 ```
+// Fetches first 10 records if limit and index not given
 curl --location --request GET 'http://localhost:5000/users'
+// limit = number of records , index =  page on which to fetch
+curl --location --request GET 'http://localhost:5000/users?limit=10&index=0'
 ```

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -23,7 +24,6 @@ type Product struct {
 func main() {
 	app := fiber.New()
 	app.Use(logger.New())
-
 	//connect to db
 	dbURL := os.Getenv("db_url")
 	if dbURL == "" {
@@ -49,8 +49,10 @@ func main() {
 
 	//GetAll products
 	app.Get("/products", func(c *fiber.Ctx) error {
+		index, _ := strconv.ParseInt(c.Query("index", "0"), 10, 32)
+		limit, _ := strconv.ParseInt(c.Query("limit", "10"), 10, 32)
 		var Products []Product = make([]Product, 0)
-		err := db.GetAll(c.Context(), "awesomeApp", "products", &Products)
+		err := db.GetAll(c.Context(), "awesomeApp", "products", &Products, limit, index)
 		if err != nil {
 			return c.Status(500).SendString(err.Error())
 		}

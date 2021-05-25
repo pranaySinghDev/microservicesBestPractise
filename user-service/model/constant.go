@@ -1,4 +1,4 @@
-package constant
+package model
 
 // User struct
 type User struct {

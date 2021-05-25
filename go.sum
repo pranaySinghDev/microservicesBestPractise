@@ -82,6 +82,8 @@ github.com/pranaySinghDev/goSAK v0.0.0-20210523121149-a31fa2dbdc80 h1:TTIgo3Ldvl
 github.com/pranaySinghDev/goSAK v0.0.0-20210523121149-a31fa2dbdc80/go.mod h1:p6vna0P9W38NYYkrVsCu5DfDp+MVJ7D1ZoRmKc379gE=
 github.com/pranaySinghDev/goSAK v0.0.1 h1:nvVBPNYxlThOowL7l+oW5n2XQ/V/qO+FXknHVhfgLWM=
 github.com/pranaySinghDev/goSAK v0.0.1/go.mod h1:wBO2r15NLq4WvNBfYWkObLrBuFFe5czbx7SYYPEOsb0=
+github.com/pranaySinghDev/goSAK v0.0.2-0.20210525150247-e15f140798e0 h1:CaIX+bHeuzrm2GT3RI9EwPzv4OZVYsqWILgpHzVhOGY=
+github.com/pranaySinghDev/goSAK v0.0.2-0.20210525150247-e15f140798e0/go.mod h1:wBO2r15NLq4WvNBfYWkObLrBuFFe5czbx7SYYPEOsb0=
 github.com/rogpeppe/go-internal v1.1.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
 github.com/rogpeppe/go-internal v1.2.2/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=

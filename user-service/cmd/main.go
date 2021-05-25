@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -70,8 +71,10 @@ func main() {
 
 	//Get all users
 	app.Get("/users", func(c *fiber.Ctx) error {
+		index, _ := strconv.ParseInt(c.Query("index", "0"), 10, 32)
+		limit, _ := strconv.ParseInt(c.Query("limit", "10"), 10, 32)
 		var Users []User = make([]User, 0)
-		err := db.GetAll(c.Context(), "awesomeApp", "users", &Users)
+		err := db.GetAll(c.Context(), "awesomeApp", "users", &Users, limit, index)
 		if err != nil {
 			return c.Status(500).SendString(err.Error())
 		}
