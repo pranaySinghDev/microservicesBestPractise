@@ -9,6 +9,7 @@ import (
 	"os"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 	guuid "github.com/google/uuid"
 	database "github.com/pranaySinghDev/goSAK/database"
 	"github.com/pranaySinghDev/goSAK/database/config"
@@ -37,6 +38,8 @@ type GetUserResponse struct {
 
 func main() {
 	app := fiber.New()
+	// Default middleware config
+	app.Use(logger.New())
 	//connect to db
 	dbURL := os.Getenv("db_url")
 	if dbURL == "" {
