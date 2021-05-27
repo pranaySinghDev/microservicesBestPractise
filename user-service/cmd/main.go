@@ -11,7 +11,6 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
-	guuid "github.com/google/uuid"
 	database "github.com/pranaySinghDev/goSAK/database"
 	"github.com/pranaySinghDev/goSAK/database/config"
 )
@@ -110,13 +109,12 @@ func main() {
 		if err := c.BodyParser(user); err != nil {
 			return c.Status(400).SendString(err.Error())
 		}
-		user.ID = guuid.New().String()
-
 		// insert the record
-		err := db.Create(c.Context(), "awesomeApp", "users", user)
+		id, err := db.Create(c.Context(), "awesomeApp", "users", user)
 		if err != nil {
 			return c.Status(500).SendString(err.Error())
 		}
+		user.ID = id
 		return c.Status(201).JSON(user)
 	})
 	addr := fmt.Sprintf(":%s", port)
