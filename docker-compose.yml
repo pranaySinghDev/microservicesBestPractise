@@ -4,18 +4,11 @@ networks:
     driver: bridge
     name: tests-network
 services:
-  database:
-    image: 'mongo'
-    container_name: 'my-mongo-container'
-    volumes:
-      - ./mongo-volume:/data/db
-    ports:
-      - '27017-27019:27017-27019'
   user-service:
     container_name: user-service
     build:
-      context: ./user-service
-      dockerfile: dockerfile
+      context: user-service
+      dockerfile: Dockerfile
     image: pranaysinghdev/user-service:latest
     networks: [tests-network]
     ports:
@@ -25,8 +18,8 @@ services:
   product-service:
     container_name: product-service
     build:
-      context: ./user-service
-      dockerfile: dockerfile
+      context: product-service
+      dockerfile: Dockerfile
     image: pranaysinghdev/product-service:latest
     networks: [tests-network]
     ports:

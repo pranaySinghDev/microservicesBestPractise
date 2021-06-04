@@ -8,8 +8,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
-	database "github.com/pranaySinghDev/goSAK/database"
-	"github.com/pranaySinghDev/goSAK/database/config"
+	"github.com/pranaySinghDev/microservicesBestPractise/pkg/database"
 )
 
 // User struct
@@ -32,13 +31,15 @@ func main() {
 	if port == "" {
 		log.Fatalf("TCP connection port string missing")
 	}
-	db, err := database.Build(&config.DBConfig{
-		Type: config.Mongodb,
-		URL:  dbURL,
-	})
-	if err != nil {
-		log.Fatalf("Couldn't build database Factory: %v", err)
-	}
+	// db, err := database.Build(&config.DBConfig{
+	// 	Type: config.Mongodb,
+	// 	URL:  dbURL,
+	// })
+	// if err != nil {
+	// 	log.Fatalf("Couldn't build database Factory: %v", err)
+	// }
+
+	db := database.Build()
 
 	// GET / base
 	app.Get("/", func(c *fiber.Ctx) error {
