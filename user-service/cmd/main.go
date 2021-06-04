@@ -40,10 +40,10 @@ func main() {
 	// Default middleware config
 	app.Use(logger.New())
 	//connect to db
-	dbURL := os.Getenv("db_url")
-	if dbURL == "" {
-		log.Fatalf("Database connection string missing")
-	}
+	// dbURL := os.Getenv("db_url")
+	// if dbURL == "" {
+	// 	log.Fatalf("Database connection string missing")
+	// }
 	port := os.Getenv("user_port")
 	if port == "" {
 		log.Fatalf("TCP connection port string missing")
@@ -89,7 +89,7 @@ func main() {
 		if err != nil {
 			return c.Status(500).SendString(err.Error())
 		}
-		product, err := getProduct(user.Product, productURL)
+		product, err := getProduct("90fg7a0fxb89b22ag428ce50", productURL)
 		if err != nil {
 			return c.Status(500).SendString(err.Error())
 		}

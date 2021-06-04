@@ -22,15 +22,15 @@ type Product struct {
 func main() {
 	app := fiber.New()
 	app.Use(logger.New())
-	//connect to db
-	dbURL := os.Getenv("db_url")
-	if dbURL == "" {
-		log.Fatalf("Database connection string missing")
-	}
 	port := os.Getenv("product_port")
 	if port == "" {
 		log.Fatalf("TCP connection port string missing")
 	}
+	//connect to db
+	// dbURL := os.Getenv("db_url")
+	// if dbURL == "" {
+	// 	log.Fatalf("Database connection string missing")
+	// }
 	// db, err := database.Build(&config.DBConfig{
 	// 	Type: config.Mongodb,
 	// 	URL:  dbURL,
